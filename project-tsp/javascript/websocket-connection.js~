@@ -43,7 +43,8 @@ function WebSocketConnection() {
 		catch(err) {
 			var text = "ERROR: " + err.message;
 			alert(text);
-			this.close();
+			//this.close();
+			connection.onclose();
 		}
 	}
 	

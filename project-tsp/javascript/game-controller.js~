@@ -32,7 +32,7 @@ function GameController(baseModel, protocol) {
 
 	self.login = function(username, password, serverIP) {
 		protocol.init('ws://' + serverIP + ':8888/websockets');
-		protocol.login(username, password);
+		protocol.login(username, password, serverIP);
 	}
 
 	self.move = function(playerName, x, y, movement) {

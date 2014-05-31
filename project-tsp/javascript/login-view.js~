@@ -96,7 +96,7 @@ function LoginView(context2D, baseModel, x, y, width, height, isEnabled) {
 
 	loginButton.addCallback('onClick', function(point, object) {
 		if (self.onLogin) {
-			self.onLogin(usernameButton.getLabel(), passwordButton.getLabel(), serverButton.getLabel());
+			self.onLogin(usernameButton.getLabel(), passwordButton.getLabel());
 		}
 	});
 

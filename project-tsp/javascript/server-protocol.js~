@@ -86,7 +86,8 @@ function ServerProtocol(serverConnection, messageBroker) {
 		connection.createNewConnection(connectionUrl);
 	}
 
-	this.login = function(username, password) {
+	this.login = function(username, password, serverIP) {
+		connection.init('ws://' + serverIP + ':8888/websockets');
 		connection.send("login " + username + " " + password);
 	}
 
