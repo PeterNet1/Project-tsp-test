@@ -52,7 +52,7 @@ function LoginView(context2D, baseModel, x, y, width, height, isEnabled) {
 	var serverButtonX = self.x + (self.width - serverButtonWidth) / 2;
 	var serverButtonY = self.y + (self.height - serverButtonHeight) / 3 + serverButtonHeight / 1.8 + passwordButtonHeight;
 
-	var serverButtonLabel = "localhost";
+	var serverButtonLabel = "192.168.1.2";
 
 	var serverButton = new ButtonComponent(context2D, true, serverButtonX, serverButtonY, serverButtonWidth, serverButtonHeight, serverButtonLabel);
 

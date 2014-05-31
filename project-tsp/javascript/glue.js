@@ -14,7 +14,7 @@ function createStartingPlayerModel(characterId, playerName, startingX, startingY
 /**
 	The Main function
 */
-function Glue() {
+function Glue() { 
 	var self = this;
 	var serverIP = null;
 	
@@ -34,7 +34,9 @@ function Glue() {
 	this.baseModel = new BaseModel();
 	this.loginView = new LoginView(this.ctx, baseModel, 0, 0, this.canvas.width, this.canvas.height, true);
 	serverIP = this.loginView.getChild(2);
+	console.log('ws://' + serverIP.getLabel() + ':8888/websockets');	
 	this.serverProtocol.init('ws://' + serverIP.getLabel() + ':8888/websockets');
+	
 
 	//basemodel previous position
 
@@ -58,6 +60,42 @@ function Glue() {
 	this.mainView.onDownEnded = this.gameController.onHold;
 
 	//loginview
+	this.addEventListener("keydown", function(event) {
+			if(event.keyCode == 37) {
+				this.mainView.onLeftStarted();	
+				return;			
+			}
+			if(event.keyCode == 38) {
+				this.mainView.onUpStarted();
+				return;	
+			}
+			if(event.keyCode == 39) {
+				this.mainView.onRightStarted();
+				return;	
+			}
+			if(event.keyCode == 40) {
+				this.mainView.onDownStarted();	
+				return;
+			}
+	});
+	this.addEventListener("keyup", function(event) {
+			if(event.keyCode == 37) {
+				this.mainView.onLeftEnded();
+				return;	
+			}
+			if(event.keyCode == 38) {
+				this.mainView.onUpEnded();
+				return;	
+			}
+			if(event.keyCode == 39) {
+				this.mainView.onRightEnded();
+				return;	
+			}
+			if(event.keyCode == 40) {
+				this.mainView.onDownEnded();
+				return;	
+			}
+	});
 	var loginViewHandler = new InputHandler(this.canvas, this.loginView.eventCallbacks);
 
 	this.loginView.onLogin = gameController.login;

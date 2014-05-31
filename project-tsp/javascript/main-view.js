@@ -1,4 +1,25 @@
 function MainView(context2D, x, y, width, height, isEnabled) {
+	var isMobile = {
+	    	Android: function() {
+			return navigator.userAgent.match(/Android/i);
+	    	},
+	    	BlackBerry: function() {
+			return navigator.userAgent.match(/BlackBerry/i);
+	    	},
+	    	iOS: function() {
+			return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+	    	},
+	    	Opera: function() {
+	    	    return navigator.userAgent.match(/Opera Mini/i);
+	    	},
+	    	Windows: function() {
+			return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+	    	},
+	    	any: function() {
+			return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+	    	}
+	};
+ 	
 	var self = this;
 	Rectanguler(UIComponent(self, isEnabled));
 	self.setDimensions(x, y, width, height);
@@ -69,9 +90,13 @@ function MainView(context2D, x, y, width, height, isEnabled) {
 	}
 
 	var construct = function() {
-		createControllerButtons();
-		addEventListeners();
-		addChildren();
+		if ( isMobile.any() ) {
+			createControllerButtons();	
+			addEventListeners();
+			addChildren();
+		}else {
+			console.log('TODO: Keyboard listeners');
+		}	
 	}
 
 	construct();

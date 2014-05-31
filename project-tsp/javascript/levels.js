@@ -20,6 +20,13 @@ function Level(context2D, width, height, levelModel) {
 	}
 
 	var textures = levelModel.textures;
+	this.getTextureWidth = function() {
+		return textureWidth;
+	} 
+
+	this.getTextureHeight = function() {
+		return textureHeight;
+	}
 
 	this.getRigidBodies = function() {
 		return rigidBodies;

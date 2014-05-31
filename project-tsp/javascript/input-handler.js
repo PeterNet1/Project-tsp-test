@@ -46,7 +46,7 @@ function InputHandler(mainCanvas, eventCallbacks) {
 		'touchmove' : mapTouchTo(eventCallbacks[GeneralTouchEvent.MOVE]),
 		'mousedown' : mapMouseTo(eventCallbacks[GeneralTouchEvent.START]),
 		'mouseup' : mapMouseTo(eventCallbacks[GeneralTouchEvent.END]),
-		'mousemove' : mapMouseTo(eventCallbacks[GeneralTouchEvent.MOVE])
+		'mousemove' : mapMouseTo(eventCallbacks[GeneralTouchEvent.MOVE]), 
 	}
 
 	var addEvents = function(mainCanvas) {
@@ -62,6 +62,20 @@ function InputHandler(mainCanvas, eventCallbacks) {
 				console.warn('No generalEvent registered to handle:' + touchEvent);
 			}
 		});
+		/*mainCanvas.addEventListener("keydown", function(event) {
+			if(event.keyCode == 37) {
+				console.log("LEFT");	
+			}
+			if(event.keyCode == 38) {
+				console.log("UP");	
+			}
+			if(event.keyCode == 39) {
+				console.log("RIGHT");	
+			}
+			if(event.keyCode == 40) {
+				console.log("DOWN");	
+			}
+		});*/
 	}
 
 	var construct = function() {
