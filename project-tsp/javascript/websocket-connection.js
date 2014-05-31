@@ -50,7 +50,6 @@ function WebSocketConnection() {
 	this.send = function(message) {
 		if (connection) {
 			this.waitForConnection(function () {
-				console.log("Still waiting... >_>");
 				connection.send(message);
 			}, 1000);
 		} else {
